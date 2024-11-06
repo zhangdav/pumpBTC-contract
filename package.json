@@ -43,5 +43,6 @@
     "@matterlabs/hardhat-zksync-verify": "^1.5.0",
     "zksync-ethers": "^6.10.0",
     "zksync-web3": "^0.17.1"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
