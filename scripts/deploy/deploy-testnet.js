@@ -1,7 +1,7 @@
 const { deployUpgradeableContract, deployContract } = require("./utils")
 const hre = require("hardhat");
 const { run, upgrades } = require("hardhat");
-const { address } = require("ton-core");
+// const { address } = require("ton-core");
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -17,7 +17,6 @@ async function main() {
     maxPriorityFeePerGas: feeData.maxFeePerGas,
   };
   console.log(overrides)
-
 
   
   // deploy mockBTC and mockPumpToken
@@ -36,7 +35,6 @@ async function main() {
 
   // const btcaddr = "0x2CfC917CBE830003F2B0BE802d1226b476e385e7"
   // const pumpBTCaddr = "0xb45aB56AafB1fFb21eE36C9Dee3B7D8ec5779fC8"
-
 
   // deploy pumpStaking
   const PumpStaking =await deployUpgradeableContract(
@@ -83,9 +81,6 @@ async function main() {
     console.error("Verification failed:", error);
   }
 
-
-
-
   // After run deploy script, need  setup:
   //   1 - Set PumpStaking as minter of PumpToken
   //   2 - PumpStaking setStakeAssetCap
@@ -118,4 +113,3 @@ main()
     console.error(error);
     process.exit(1);
   });
-
