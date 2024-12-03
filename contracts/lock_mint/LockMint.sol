@@ -149,9 +149,10 @@ contract LockMint is Ownable2Step, ReentrancyGuard, Pausable {
     function burnUnlock(uint256 amount) external nonReentrant whenNotPaused {
         require(burnUnlockEnabled, "BurnUnlock is currently disabled");
         require(amount > 0, "LockMint: Amount must be greater than zero");
-        require(pendingBurnUnlocks[msg.sender] == 0, "Existing pending burnUnlock request");
+        require(mintAsset.balanceOf(msg.sender) >= amount, "Insufficient balance");
 
         if (approvalRequired) {
+            require(pendingBurnUnlocks[msg.sender] == 0, "Existing pending burnUnlock request");
             pendingBurnUnlocks[msg.sender] = amount;
             emit BurnUnlockRequested(msg.sender, amount);
         } else {
